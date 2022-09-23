@@ -3,7 +3,7 @@ package com.xml.demo.repository;
 import java.sql.*;
 import java.util.ArrayList;
 
-import com.xml.model.SystemModel;
+import com.xml.demo.model.SystemModel;
 
 public class Db {
 

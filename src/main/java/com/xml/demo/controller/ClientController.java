@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.xml.demo.model.SystemModel;
 import com.xml.demo.repository.Db;
-import com.xml.model.SystemModel;
 
 @RestController
 @RequestMapping(value = "/api")
