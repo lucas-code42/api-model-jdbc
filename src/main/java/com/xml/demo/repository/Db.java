@@ -9,9 +9,9 @@ public class Db {
 
 	public Connection mysqlConnect() {
 		try {
-			String url = "jdbc:mysql://localhost:3306/java_application";
-			String user = "java";
-			String pass = "java";
+			String url = "jdbc:mysql://localhost:3306/developer";
+			String user = "dev";
+			String pass = "dev";
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection conn = DriverManager.getConnection(url, user, pass);
 			System.out.println("Conexao estabelecida");
@@ -107,13 +107,15 @@ public class Db {
 		SystemModel dataModel = new SystemModel();
 		ArrayList<SystemModel> objArray = new ArrayList<SystemModel>();
 
-		String query = "SELECT * FROM SYSTEM_PREFERENCES_ATTRIBUTE_VALUE INNER JOIN SYSTEM_PREFERENCES ON SYSTEM_PREFERENCES_ATTRIBUTE_VALUE.system_preferences_id = SYSTEM_PREFERENCES.id WHERE domain_id = ?";
+		String query = "SELECT * FROM SYSTEM_PREFERENCES_ATTRIBUTE_VALUE INNER JOIN SYSTEM_PREFERENCES ON SYSTEM_PREFERENCES_ATTRIBUTE_VALUE.system_preferences_id = SYSTEM_PREFERENCES.id WHERE system_preferences_id = ?";
 
 		try {
 			PreparedStatement stmt = conn.prepareStatement(query);
 			stmt.setString(1, domainId);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
+				System.out.println((rs.getString("system_preferences_id")));
+				
 				dataModel.setSystemPreferencesId(rs.getString("system_preferences_id"));
 				dataModel.setDomainId(rs.getString("domain_id"));
 				dataModel.setUserId(rs.getString("user_id"));
